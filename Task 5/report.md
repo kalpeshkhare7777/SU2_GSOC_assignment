@@ -19,17 +19,10 @@ The implementation builds upon the validated test case from Assignment 2, mainta
 The primary changes to the configuration file focused on output settings:
 
 ```ini
-% Solver settings (unchanged)
-SOLVER = RANS
-TURB_MODEL = SST
-AXISYMMETRIC = YES
-MATH_PROBLEM = DIRECT
-RESTART_SOL = NO
-
 % Output modifications
-HISTORY_OUTPUT= (SOUND_SPEED)
-VOLUME_OUTPUT= (SOUND_SPEED)
-SCREEN_OUTPUT= (INNER_ITER, WALL_TIME, RMS_DENSITY, RMS_NU_TILDE, LIFT, DRAG, SOUND_SPEED)
+VOLUME_OUTPUT= ( COORDINATES, SOLUTION, PRIMITIVE , SOUND_SPEED)
+HISTORY_OUTPUT= ( ITER, RMS_RES , SOUND_SPEED)
+SCREEN_OUTPUT= ( INNER_ITER, RMS_DENSITY, RMS_MOMENTUM-X, RMS_MOMENTUM-Y, RMS_ENERGY , SOUND_SPEED )
 ```
 
 ### 2.3 Code Implementation
@@ -69,13 +62,8 @@ The speed of sound output enables more detailed analysis of compressibility effe
 
 ### 3.4 Flow Field Visualization
 #### 3.4.1 Speed of Sound Contours
+![Sound Speed Contours](Sound_speed.png)  
 **Figure 2:** Speed of sound distribution in the axisymmetric jet
-
-#### 3.4.2 Mach Number Contours
-**Figure 3:** Mach number distribution (now computed using new sound speed output)
-
-#### 3.4.3 Velocity Magnitude Contours
-**Figure 4:** Velocity magnitude distribution
 
 ## 4. Validation and Verification
 ### 4.1 Thermodynamic Consistency
@@ -97,18 +85,7 @@ The additional output resulted in:
 - **No impact** on memory requirements
 
 ## 5. Conclusion
-The implementation of speed of sound output was successfully completed and integrated with the existing axisymmetric turbulent jet simulation. The modification:
-- Provided additional physical insight into the flow characteristics
-- Enabled more detailed compressibility analysis through Mach number computation
-- Maintained all original solution accuracy and convergence properties
-- Introduced minimal computational overhead
-
-The new output capability enhances the utility of the simulation for acoustic and compressibility studies while preserving all validated features of the original test case.
-
-### Recommendations for Future Work:
-- Implement additional acoustic outputs (e.g., pressure fluctuations)
-- Add capability for integrated noise prediction
-- Include non-isothermal conditions to study thermal effects on sound speed
+The implementation of speed of sound output was successfully completed and integrated with the existing axisymmetric turbulent jet simulation.
 
 ## References
 - [SU2 Documentation](https://su2code.github.io/docs_v7/)
