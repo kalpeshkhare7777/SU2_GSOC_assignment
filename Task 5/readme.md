@@ -16,6 +16,7 @@ The implementation builds upon the validated test case from Assignment 2, mainta
   - **Axis:** Axisymmetric boundary condition
 
 ### 2.2 Configuration Modifications
+
 The primary changes to the configuration file focused on output settings:
 
 ```ini
